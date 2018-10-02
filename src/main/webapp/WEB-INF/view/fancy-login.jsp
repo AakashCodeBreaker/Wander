@@ -19,6 +19,7 @@
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="js/form-validation.js"></script>
 
 </head>
 
@@ -38,9 +39,9 @@
 				<div style="padding-top: 30px" class="panel-body">
 
 					<!-- Login Form -->
-					<form:form
+					<form:form name="registration"
 						action="${pageContext.request.contextPath }/authenticateTheUser"
-						method="POST" class="form-horizontal">
+						method="POST" class="form-horizontal" modelAttribute="user">
 
 						<!-- Place for messages: error, alert etc ... -->
 						<div class="form-group">
@@ -63,16 +64,23 @@
 
 						<!-- User name -->
 						<div style="margin-bottom: 25px" class="input-group">
+
+							${account }</div>
+
+						<!-- User name -->
+						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input type="text"
-								name="username" placeholder="username" class="form-control">
+								name="username" id="username" placeholder="username" required
+								class="form-control">
 						</div>
 
 						<!-- Password -->
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-lock"></i></span> <input type="password"
-								name="password" placeholder="password" class="form-control">
+								name="password" placeholder="password" id="password" required
+								class="form-control">
 						</div>
 
 						<!-- Login/Submit Button -->
@@ -81,7 +89,8 @@
 								<button type="submit" class="btn btn-success">Login</button>
 							</div>
 							<div class="col-sm-6 controls">
-								<a href="${pageContext.request.contextPath }/registerTheUser"><p>Register! new user</p></a>
+								<a href="${pageContext.request.contextPath }/registerTheUser"><p>Register!
+										new user</p></a>
 							</div>
 						</div>
 

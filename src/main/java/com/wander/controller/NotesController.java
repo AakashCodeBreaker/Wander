@@ -26,7 +26,6 @@ public class NotesController {
 	@RequestMapping("/showAllNotes")
 	public String showAllNotes(Model model){
 		List<Notes> noteList = notesService.showAllNotes();
-		//myList.stream().forEach(e->System.out.println(e));
 		model.addAttribute("noteList",noteList);
 		return "show-notes";
 	}
@@ -43,6 +42,10 @@ public class NotesController {
 	@RequestMapping("/updateNote")
 	public String updateNote(Model model){
 		List<Notes> noteList = notesService.showAllNotes();
+		if(noteList.isEmpty()){
+			model.addAttribute("noteList","Note list is empty..!!, kindly Add new Note");
+			return "note-input";
+		}
 		model.addAttribute("noteList",noteList);
 		model.addAttribute("val","update");
 		return "title-input";
@@ -57,6 +60,10 @@ public class NotesController {
 	@RequestMapping("/deleteNote")
 	public String deleteNote(Model model){
 		List<Notes> noteList = notesService.showAllNotes();
+		if(noteList.isEmpty()){
+			model.addAttribute("noteList","Note list is empty..!!, kindly Add new Note");
+			return "note-input";
+		}
 		model.addAttribute("noteList",noteList);
 		model.addAttribute("val","delete");
 		return "title-input";
@@ -67,6 +74,7 @@ public class NotesController {
 		model.addAttribute("str", str);
 		return "home-page";
 	}
+
 }
 
 

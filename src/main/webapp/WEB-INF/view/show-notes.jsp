@@ -13,7 +13,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Home Page</title>
+<title>Show Notes Page</title>
 <style>
 table {
 	border-collapse: collapse;
@@ -22,12 +22,16 @@ table {
 </head>
 <body>
 	<h1 align="center">Notes List</h1>
+		<form:form action="/note/showHome" modelAttribute="${role}" method="get">
+
+		<input align="right" type="submit" value="Home Page" />
+	</form:form>	
 	<c:choose>
 		<c:when test="${noteList.size()>0 }">
 
 			<h2>Available Notes</h2>
-		
-		<table class="table">
+
+			<table class="table">
 				<thead>
 					<tr>
 						<th>Title</th>
@@ -56,9 +60,7 @@ table {
 			<h3>No notes were found</h3>
 		</c:otherwise>
 	</c:choose>
-	<form:form action="/note/showHome" method="get">
 
-		<input type="submit" value="Home Page" />
-	</form:form>
+	
 </body>
 </html>

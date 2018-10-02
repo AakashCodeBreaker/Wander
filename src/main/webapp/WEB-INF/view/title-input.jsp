@@ -6,7 +6,7 @@
 
 <head>
 
-<title>Get title Page</title>
+<title>Title Input Page</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -18,34 +18,32 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script>
 
+</script>
 </head>
 
 <body>
-
 	<c:choose>
 		<c:when test="${noteList.size()>0 }">
-
 			<h2>Available Notes</h2>
-
+			<form:form action="/note/showHome" method="get">
+				<input type="submit" value="Home Page" />
+			</form:form>
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Title</th>
-						<th>Description</th>
-						<th>Creator</th>
-						<th>Creation Date</th>
-
+						<th>Title</th><th>Description</th>
+						<th>Creator</th><th>Creation Date</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="itm" items="${noteList }">
 						<tr class="success">
-							<td>${itm.title }</td>
-							<td>${itm.description }</td>
-							<td>${itm.creator }</td>
-							<td>${itm.creation }</td>
-
+							<td >${itm.title }</td>
+							<td>${itm.description}</td>
+							<td>${itm.creator}</td>
+							<td>${itm.creation}</td>
 						</tr>
 					</c:forEach>
 
@@ -84,7 +82,7 @@
 								<div style="margin-bottom: 25px" class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-user"></i></span> <input type="text"
-										name="title" placeholder="enter note's title"
+										name="title" id="title" value="" placeholder="enter note's title" required
 										class="form-control">
 								</div>
 								<!-- note submit button -->
@@ -106,28 +104,28 @@
 								<div style="margin-bottom: 25px" class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-user"></i></span> <input type="text"
-										name="title" placeholder="enter note's title"
+										name="title" id="title" value="" placeholder="enter note's title" required
 										class="form-control">
 								</div>
 								<!-- note description text field -->
 								<div style="margin-bottom: 25px" class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-user"></i></span> <input type="text"
-										name="description" placeholder="enter note description"
+										name="description" id="description" value="" placeholder="enter note description" required
 										class="form-control">
 								</div>
 								<!-- note creator field -->
 								<div style="margin-bottom: 25px" class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-user"></i></span> <input type="text"
-										name="creator" placeholder="enter upadtor's name"
+										name="creator" id="creator" value="" placeholder="enter upadtor's name" required
 										class="form-control">
 								</div>
 								<!-- note creation date field -->
 								<div style="margin-bottom: 25px" class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-user"></i></span> <input type="date"
-										name="creation" placeholder="enter updation date"
+										name="creation" id="creation" value="" placeholder="enter updation date" required
 										class="form-control">
 								</div>
 

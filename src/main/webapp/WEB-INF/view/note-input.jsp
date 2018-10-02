@@ -5,7 +5,7 @@
 
 <head>
 
-<title>Login Page</title>
+<title>Notes Input Page</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -24,44 +24,55 @@
 
 	<div>
 
+
 		<div id="loginbox" style="margin-top: 50px;"
 			class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
 
 			<div class="panel panel-info">
 
 				<div class="panel-heading">
-					<div class="panel-title">Sign In</div>
+					<div class="panel-title">Add a Note</div>
+					<div>
+						<form:form action="/note/showHome" modelAttribute="${role}" method="get">
+							<input type="submit" value="Home Page" />
+						</form:form>						
+					</div>					
 				</div>
 
 				<div style="padding-top: 30px" class="panel-body">
 
 					<!-- Login Form -->
-					<form:form method="POST" modelAttribute ="note" 
-					action="${pageContext.request.contextPath }/note/addNoteValues" class="form-horizontal">
-						
+					<form:form method="POST" modelAttribute="note"
+						action="${pageContext.request.contextPath }/note/addNoteValues"
+						class="form-horizontal">
+
 						<!-- note text field -->
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input type="text"
-								name="title" placeholder="enter note's title" class="form-control">
+								name="title" placeholder="enter note's title" required
+								class="form-control">
 						</div>
 						<!-- note description text field -->
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input type="text"
-								name="description" placeholder="enter note description" class="form-control">
+								name="description" placeholder="enter note description"
+								class="form-control" required>
 						</div>
 						<!-- note creator field -->
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input type="text"
-								name="creator" placeholder="enter creator's name" class="form-control">
+								name="creator" placeholder="enter creator's name"
+								class="form-control" required>
 						</div>
 						<!-- note creation date field -->
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input type="date"
-								name="creation" placeholder="enter creation date" class="form-control">
+								name="creation" placeholder="enter creation date"
+								class="form-control" required>
 						</div>
 						<!-- note submit button -->
 						<div style="margin-top: 10px" class="form-group">
