@@ -7,12 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  
 <title>Show Notes Page</title>
 <style>
 table {
@@ -31,7 +30,7 @@ table {
 
 			<h2>Available Notes</h2>
 
-			<table class="table">
+			<table class="table table-hover table-dark table-striped">
 				<thead>
 					<tr>
 						<th>Title</th>
@@ -43,7 +42,7 @@ table {
 				</thead>
 				<tbody>
 					<c:forEach var="itm" items="${noteList }">
-						<tr class="success">
+						<tr>
 							<td>${itm.title }</td>
 							<td>${itm.description }</td>
 							<td>${itm.creator }</td>
@@ -60,7 +59,14 @@ table {
 			<h3>No notes were found</h3>
 		</c:otherwise>
 	</c:choose>
-
+	<form:form action="${pageContext.request.contextPath }/logout"
+						method="POST">
+						<div style="margin-top: 10px" class="form-group">
+							<div class="col-sm-6 controls">
+								<input type="submit" value="Logout">
+							</div>
+						</div>
+					</form:form>
 	
 </body>
 </html>

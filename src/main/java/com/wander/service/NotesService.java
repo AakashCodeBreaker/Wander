@@ -46,4 +46,15 @@ public class NotesService {
 		
 	}
 
+	public Notes getNote(String title) {
+		List<Notes> notes = new ArrayList<>();
+		notesRepo.findAll().forEach(notes::add);
+		for(Notes note : notes){
+			if(note.getTitle().equals(title)){
+				return note;
+			}
+		}
+		return null;
+	}
+
 }

@@ -67,7 +67,7 @@
 						<div style="margin-top: 10px" class="form-group">
 							<div class="col-sm-6 controls">
 								<button type="submit" class="btn btn-success"
-									formaction="${pageContext.request.contextPath }/note/deleteNote">Delete
+									formaction="${pageContext.request.contextPath }/note/linkNote">Delete
 									a note</button>
 							</div>
 						</div>
@@ -75,7 +75,7 @@
 						<div style="margin-top: 10px" class="form-group">
 							<div class="col-sm-6 controls">
 								<button type="submit" class="btn btn-success"
-									formaction="${pageContext.request.contextPath }/note/updateNote">Update
+									formaction="${pageContext.request.contextPath }/note/linkNote">Update
 									a note</button>
 							</div>
 						</div>

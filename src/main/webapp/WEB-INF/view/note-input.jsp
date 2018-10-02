@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!doctype html>
 <html lang="en">
 
@@ -17,15 +18,38 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<link type="text/css" rel="Stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" />
+<script type="text/javascript">
+    $(function () {
+        Date.prototype.ddmmyyyy = function () {
+            var dd = this.getDate().toString();
+            var mm = (this.getMonth() + 1).toString();
+            var yyyy = this.getFullYear().toString();
+            return (dd[1] ? dd : "0" + dd[0]) + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + yyyy;
+        };
+        $("#creation").datepicker({ dateFormat: "dd-mm-yy" });
+        $("#creation").on('change', function () {
+            var selectedDate = $(this).val();
+            var todaysDate = new Date().ddmmyyyy();
+            if (selectedDate < todaysDate | selectedDate < todaysDate) {
+                alert('Selected date should not be greater than today date');
+                $(this).val('');
+            }
+        });
+    });            
+</script>
 
 </head>
 
 <body>
 
 	<div>
+		
+		
 
-
-		<div id="loginbox" style="margin-top: 50px;"
+		<div id="loginbox" style="margin-top: 50px"
 			class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
 
 			<div class="panel panel-info">
@@ -50,28 +74,28 @@
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input type="text"
-								name="title" placeholder="enter note's title" required
+								name="title" required placeholder="enter note's title" required
 								class="form-control">
 						</div>
 						<!-- note description text field -->
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input type="text"
-								name="description" placeholder="enter note description"
+								name="description" required placeholder="enter note description"
 								class="form-control" required>
 						</div>
 						<!-- note creator field -->
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input type="text"
-								name="creator" placeholder="enter creator's name"
-								class="form-control" required>
+								name="creator" id="creator" value="${pageContext.request.userPrincipal.name}"
+								class="form-control" required >
 						</div>
 						<!-- note creation date field -->
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input type="date"
-								name="creation" placeholder="enter creation date"
+								name="creation" id ="creation" placeholder="enter creation date"
 								class="form-control" required>
 						</div>
 						<!-- note submit button -->
@@ -81,7 +105,14 @@
 							</div>
 						</div>
 					</form:form>
-
+					<form:form action="${pageContext.request.contextPath }/logout"
+						method="POST">
+						<div style="margin-top: 10px" class="form-group">
+							<div class="col-sm-6 controls">
+								<input type="submit" value="Logout">
+							</div>
+						</div>
+					</form:form>
 
 
 				</div>
