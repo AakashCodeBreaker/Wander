@@ -32,7 +32,7 @@
 			<form:form action="/note/showHome" method="get">
 				<input type="submit" value="Home Page" />
 			</form:form>
-			<table class="table">
+			<table class="table table-hover table-dark table-striped">
 				<thead>
 					<tr>
 						<th>Title</th>
